@@ -1,0 +1,19 @@
+{
+  "name": "uni-debug-toolbox",
+  "version": "0.1.1",
+  "description": "On-device debug toolbox for uni-app Vue 3",
+  "type": "module",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "git+https://github.com/AmazingZ-sys/uni-debug-toolbox.git" },
+  "keywords": ["uni-app", "vue3", "vite", "debug", "console"],
+  "publishConfig": { "access": "public", "registry": "https://registry.npmjs.org/" },
+  "sideEffects": ["**/*.vue"],
+  "files": ["src", "types", "README.md", "LICENSE"],
+  "exports": {
+    ".": { "types": "./types/index.d.ts", "import": "./src/index.js" },
+    "./panel.vue": { "types": "./types/panel.d.ts", "default": "./src/DebugToolbox.vue" },
+    "./browser": { "types": "./types/browser.d.ts", "import": "./src/browser.js" }
+  },
+  "peerDependencies": { "vue": "^3.0.0" },
+  "scripts": { "test": "node --test", "pack:check": "npm pack --dry-run" }
+}
