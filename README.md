@@ -68,11 +68,12 @@ npm pack --dry-run
 npm pack
 npm login --registry=https://registry.npmjs.org/
 npm whoami --registry=https://registry.npmjs.org/
+npm profile enable-2fa auth-and-writes  # 账号尚未启用双重验证时执行一次
 npm publish --access public --registry=https://registry.npmjs.org/
 npm view uni-debug-toolbox@0.1.1 version --registry=https://registry.npmjs.org/
 ```
 
-`npm pack` 会生成 `uni-debug-toolbox-0.1.1.tgz`，可在发布前用 `tar -tzf uni-debug-toolbox-0.1.1.tgz` 核对内容。首次公开发布需要有 npm 账号并完成本机登录；若账号启用双重验证，按终端提示在浏览器确认。npm 版本发布后不能覆盖，同一版本需要修正时先更新 `package.json` 的版本并重新打包。不要把业务数据或密钥放入包中。
+`npm pack` 会生成 `uni-debug-toolbox-0.1.1.tgz`，可在发布前用 `tar -tzf uni-debug-toolbox-0.1.1.tgz` 核对内容。npm 现在要求发布时完成双重验证；若账号尚未启用，先运行上述 `npm profile enable-2fa` 命令并按提示绑定验证器。发布命令应在交互式终端运行，按提示输入动态码。不要把动态码或访问令牌写进仓库或聊天。npm 版本发布后不能覆盖，同一版本需要修正时先更新 `package.json` 的版本并重新打包。不要把业务数据或密钥放入包中。参见 [npm 官方发布验证说明](https://docs.npmjs.com/requiring-2fa-for-package-publishing-and-settings-modification/)。
 
 ## 已知范围
 
